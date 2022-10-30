@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, Space } from "antd";
 import Upload from "./upload/upload";
 import { Wrapper } from "./__styles";
+import Description from "./description/description";
+import Link from "next/link";
 
-const FormFragment = () => {
+const FormFragment = ({ initialValues, pid }) => {
   const handleFinish = async (data = {}) => {
     const { cover_vertical = [], cover_horizontal = [], ...otherData } = data;
 
@@ -48,7 +50,13 @@ const FormFragment = () => {
   return (
     <>
       <Wrapper>
-        <Form layout="vertical" onFinish={handleFinish}>
+        <Space style={{ marginBottom: "24px" }}>
+          <Link href="/projects">
+            <Button>Ко всем проектам</Button>
+          </Link>
+        </Space>
+
+        <Form {...{ initialValues }} layout="vertical" onFinish={handleFinish}>
           <Form.Item
             label="Название (на русском)"
             name="nameru"
@@ -70,7 +78,7 @@ const FormFragment = () => {
             name="description"
             rules={[requiredCfgs]}
           >
-            <Input />
+            <Description />
           </Form.Item>
 
           <Form.Item

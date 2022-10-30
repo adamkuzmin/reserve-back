@@ -6,7 +6,7 @@ import Dragger from "antd/lib/upload/Dragger";
 import client from "../../../../sanity/client";
 import { Wrapper } from "./__styles";
 
-const openMessage = (type, message) => {
+export const openMessage = (type, message) => {
   notification[type]({
     message,
   });
@@ -42,6 +42,7 @@ const Upload = (formProps = {}) => {
           openMessage("success", "Изображение успешно загрузилось!");
         })
         .catch((err) => {
+          console.log("error", err);
           openMessage("error", "Произошла ошибка при загрузке на сервер");
         });
     },

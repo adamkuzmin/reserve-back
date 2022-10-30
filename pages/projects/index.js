@@ -1,5 +1,5 @@
 import React from "react";
-import Catalog from "../../components/projects/form/form";
+import Catalog from "../../components/projects/catalog/catalog";
 
 const ProjectsPage = () => {
   return <Catalog />;
